@@ -4,6 +4,7 @@
 [![API](https://img.shields.io/badge/API-15%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=15)
 [![LookAtMe](https://img.shields.io/badge/Pradyuman7-LookAtMe-red.svg?style=flat)](https://github.com/Pradyuman7/LookAtMe)
 [![AwesomeAndroid](https://img.shields.io/badge/Awesome_Android-Pager-purple.svg?style=flat)](https://android.libhunt.com/lookatme-alternatives)
+[ ![Download](https://api.bintray.com/packages/pradyuman7/LookAtMe/LookAtMe/images/download.svg?version=Version1.0) ](https://bintray.com/pradyuman7/LookAtMe/LookAtMe/Version1.0/link)
 
 <p align="center">
   <img width="250" height="250" src="https://user-images.githubusercontent.com/41565823/53729574-dceb1380-3e75-11e9-891b-87e1f12126b0.gif">
