@@ -19,6 +19,10 @@
   <img width="300" height="550" src="https://user-images.githubusercontent.com/41565823/53345341-f8ee3280-3914-11e9-8be4-0f4e89ae69db.gif">
 </p>
 
+## AndroidPub (Medium) Post
+
+[You can read the AndroidPub post about this library, the perks it provides and other details here](https://android.jlelse.eu/a-videoview-that-detects-your-face-and-tracks-your-eyes-afc3a04fd735).
+
 ## Screenshots
 ![screenshot_2019-01-10-07-02-17-959_com pd trackeye](https://user-images.githubusercontent.com/41565823/50949699-8978cc80-14a7-11e9-9899-b99fec80be41.jpg)
 ![screenshot_2019-01-10-07-02-22-894_com pd trackeye](https://user-images.githubusercontent.com/41565823/50949700-8978cc80-14a7-11e9-96e8-92eb7cfdb78f.jpg)
