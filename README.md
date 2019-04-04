@@ -4,7 +4,7 @@
 [![API](https://img.shields.io/badge/API-15%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=15)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-LookAtMe-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/7551)
 [![LookAtMe](https://img.shields.io/badge/Pradyuman7-LookAtMe-red.svg?style=flat)](https://github.com/Pradyuman7/LookAtMe)
-[![AwesomeAndroid](https://img.shields.io/badge/Awesome_Android-Pager-purple.svg?style=flat)](https://android.libhunt.com/lookatme-alternatives)
+[![AwesomeAndroid](https://img.shields.io/badge/Awesome_Android-LookAtMe-purple.svg?style=flat)](https://android.libhunt.com/lookatme-alternatives)
 [ ![Download](https://api.bintray.com/packages/pradyuman7/LookAtMe/LookAtMe/images/download.svg?version=Version1.0) ](https://bintray.com/pradyuman7/LookAtMe/LookAtMe/Version1.0/link)
 
 <p align="center">
