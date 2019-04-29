@@ -7,6 +7,7 @@
 [![AwesomeAndroid](https://img.shields.io/badge/Awesome_Android-LookAtMe-purple.svg?style=flat)](https://android.libhunt.com/lookatme-alternatives)
 [![Android Weekly](https://img.shields.io/badge/Android_Weekly-LookAtMe-lightblue.svg?style=flat)](https://androidweekly.cn/android-dev-weekly-issue-224/#LookAtMe)
 [![Android Dev Digest](https://img.shields.io/badge/Android_Dev_Digest_222-LookAtMe-orange.svg?style=flat)](https://www.androiddevdigest.com/digest-222/)
+[![Android Sweets](https://img.shields.io/badge/Android_Sweets-LookAtMe-black.svg?style=flat)](https://androidsweets.ongoodbits.com/2019/04/13/read-about-some-good-practices-when-converting-your-code-to-kotlin-and-check-this-weeks-amazing-library-pack)
 [ ![Download](https://api.bintray.com/packages/pradyuman7/LookAtMe/LookAtMe/images/download.svg?version=Version1.0) ](https://bintray.com/pradyuman7/LookAtMe/LookAtMe/Version1.0/link)
 
 <p align="center">
