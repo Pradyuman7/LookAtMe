@@ -55,6 +55,13 @@ dependencies {
 }
 ```
 
+For latest release, please check the JitPack version and match it with the dependency.
+```gradle
+dependencies {
+	        implementation 'com.github.Pradyuman7:LookAtMe:Version2.0'
+}
+```
+
 ## Usage
 
 LookAtMe is very easy to use and can be directly used in your application. You just need to first declare the `LookAtMe` variable in your activity, and add the following in layout of your activity (XML file).
