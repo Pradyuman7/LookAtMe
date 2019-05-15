@@ -81,7 +81,7 @@ After this, just initiallise `LookAtMe` variable with the activity context, add 
         lookAtMe.setLookMe();
 ```        
 
-Now the developer can also access that if the user laughed / smiled during the video. For this, just use this `init()` method instead of the above.
+Now in Version2.0 the developer can also access that if the user laughed / smiled during the video. For this, just use this `init()` method instead of the above.
 
 ```java
 	lookAtMe.initWithSmilingStatus(this); // for smiling status of the user
