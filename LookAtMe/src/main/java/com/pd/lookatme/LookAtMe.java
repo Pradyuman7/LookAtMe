@@ -25,8 +25,10 @@ import java.io.IOException;
 public class LookAtMe extends VideoView {
 
     private String status = "";
+    private String smilingStatus = "";
     private CameraSource cameraSource;
     private Context activityContext;
+    private int timesSmiled = 0;
 
     public void init(Context activityContext) {
         this.activityContext = activityContext;
@@ -43,6 +45,11 @@ public class LookAtMe extends VideoView {
         createCameraSource(mode);
     }
 
+    public void initWithSmilingStatus(Context activityContext){
+        this.activityContext = activityContext;
+        createCameraSourceWithSmilingStatus();
+    }
+
     public void resume(){
         if (cameraSource != null) {
             try {
@@ -51,7 +58,6 @@ public class LookAtMe extends VideoView {
                     Toast.makeText(activityContext, "Grant Permission and restart app", Toast.LENGTH_SHORT).show();
                 }
                 cameraSource.start();
-                //Log.d("some8","Starting first");
             }
             catch (IOException e) {
                 e.printStackTrace();
@@ -62,11 +68,10 @@ public class LookAtMe extends VideoView {
     public void paused(){
         if (cameraSource != null) {
             cameraSource.stop();
-            //Log.d("some6","stopped here");
         }
+
         if (this.isPlaying()) {
             this.pause();
-            //Log.d("some7","Paused() here");
         }
     }
 
@@ -114,9 +119,15 @@ public class LookAtMe extends VideoView {
         return status;
     }
 
-    public void setLookMe(){
-        //Log.d("this is found","camerasource is " + cameraSource);
+    public String getSmilingStatus(){
+        return smilingStatus;
+    }
 
+    public int getTimesSmiled(){
+        return timesSmiled;
+    }
+
+    public void setLookMe(){
         try {
             if (ActivityCompat.checkSelfPermission(activityContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions((Activity) activityContext, new String[]{Manifest.permission.CAMERA}, 1);
@@ -124,7 +135,7 @@ public class LookAtMe extends VideoView {
                 Toast.makeText(activityContext, "Grant Permission and restart app", Toast.LENGTH_SHORT).show();
             }
             cameraSource.start();
-            Log.d("ReadThis", "camerasource started, outside");
+            Log.d("ReadThis", "camera-source started, outside");
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -142,17 +153,14 @@ public class LookAtMe extends VideoView {
         @Override
         public void onUpdate(Detector.Detections<Face> detections, Face face) {
             if (face.getIsLeftEyeOpenProbability() > THRESHOLD || face.getIsRightEyeOpenProbability() > THRESHOLD) {
-               // Log.d("some9", "Eyes Detecting");
 
                 if (!isPlaying())
                     start();
 
                 status = "Eyes Detected and open, so video continues";
-                //Log.d("some3", "Started due to eyes detected");
             }
             else {
                 if (isPlaying()){
-                   // Log.d("some4","Paused due to eyes closed");
                     pause();
                 }
 
@@ -165,7 +173,43 @@ public class LookAtMe extends VideoView {
             super.onMissing(detections);
             status = "Face Not Detected!";
             pause();
-            //Log.d("some5","Face is Missing");
+        }
+
+        @Override
+        public void onDone() {
+            super.onDone();
+        }
+    }
+
+    private class FaceTracker extends Tracker<Face> {
+        private final float THRESHOLD = 0.75f;
+
+        private FaceTracker(){
+
+        }
+
+        @Override
+        public void onUpdate(Detector.Detections<Face> detections, Face face) {
+            if(face.getIsSmilingProbability() > THRESHOLD) {
+                smilingStatus = "smiling";
+                timesSmiled++;
+                Log.d("smile", String.valueOf(getTimesSmiled()));
+
+                if(timesSmiled > 100){
+                    timesSmiled -= 100;
+
+                    Log.d("Smiling","You smiled for 100 frames!");
+
+                }
+            }
+            else{
+                smilingStatus = "Not smiling";
+            }
+        }
+
+        @Override
+        public void onMissing(Detector.Detections<Face> detections) {
+            super.onMissing(detections);
         }
 
         @Override
@@ -188,7 +232,27 @@ public class LookAtMe extends VideoView {
             }
             else
                 cameraSource.start();
-            //Log.d("ReadThis", "camerasource started, inside");
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void createCameraSourceWithSmilingStatus() {
+        FaceDetector detector = new FaceDetector.Builder(activityContext).setTrackingEnabled(true).setClassificationType(FaceDetector.ALL_CLASSIFICATIONS).setMode(FaceDetector.FAST_MODE).build();
+
+        FaceTracker faceTracker = new FaceTracker();
+        detector.setProcessor(new LargestFaceFocusingProcessor(detector, faceTracker));
+
+        cameraSource = new CameraSource.Builder(activityContext, detector).setRequestedPreviewSize(1024, 768).setFacing(CameraSource.CAMERA_FACING_FRONT).setRequestedFps(30.0f).build();
+
+        try {
+            if (ActivityCompat.checkSelfPermission(activityContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions((Activity) activityContext, new String[]{Manifest.permission.CAMERA}, 1);
+                Toast.makeText(activityContext, "Grant Permission and restart app", Toast.LENGTH_SHORT).show();
+            }
+            else
+                cameraSource.start();
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -217,7 +281,6 @@ public class LookAtMe extends VideoView {
             }
             else
                 cameraSource.start();
-            //Log.d("ReadThis", "camerasource started, inside");
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -226,7 +289,7 @@ public class LookAtMe extends VideoView {
 
     private void createCameraSource(String mode, String cameraFace) {
 
-        // Let the mode be fast or accurate
+        // Let the mode be fast or accurate and
         // Let the cameraFace be front or back
 
         FaceDetector detector;
@@ -250,7 +313,6 @@ public class LookAtMe extends VideoView {
             }
             else
                 cameraSource.start();
-            //Log.d("ReadThis", "camerasource started, inside");
         }
         catch (IOException e) {
             e.printStackTrace();

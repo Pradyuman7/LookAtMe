@@ -3,7 +3,9 @@ package com.pd.lookme;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.pd.lookatme.LookAtMe;
@@ -21,11 +23,13 @@ public class MainActivity extends AppCompatActivity {
         lookAtMe = findViewById(R.id.lookme);
         textView = findViewById(R.id.textView2);
 
-        lookAtMe.init(this);
+        //lookAtMe.init(this); for eye tracking status
+        lookAtMe.initWithSmilingStatus(this); // for smiling status of the user
         lookAtMe.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.videoplayback));
 
         lookAtMe.start();
         lookAtMe.setLookMe();
+
 
         this.showStatus();
     }
