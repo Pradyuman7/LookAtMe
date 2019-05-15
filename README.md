@@ -88,6 +88,20 @@ After this, just initiallise `LookAtMe` variable with the activity context, add 
         lookAtMe.setLookMe();
 ```        
 
+You can also personalise the experience according to your need, using `init()`. In this method you can add if you want the eye-tracking mode to be `FAST` or `ACCURATE`, and also which camera to use, front or back. The method bodies look like this:
+```java
+public void init(Context activityContext, String mode, String cameraFace){
+        // add mode to be fast or accurate and cameraFace to be front or back
+    }
+```
+```java
+public void init(Context activityContext, String mode){
+        // add mode to be accurate or fast   
+    }
+```    
+
+### Version2.0 additions
+
 Now in Version2.0 the developer can also access that if the user laughed / smiled during the video. For this, just use this `init()` method instead of the above.
 
 ```java
@@ -118,17 +132,7 @@ You can access the log of your android app like this:
 
 To know more about this, please refer [this link](https://stackoverflow.com/questions/12692103/read-logcat-programmatically-within-application).
 
-You can also personalise the experience according to your need, using `init()`. In this method you can add if you want the eye-tracking mode to be `FAST` or `ACCURATE`, and also which camera to use, front or back. The method bodies look like this:
-```java
-public void init(Context activityContext, String mode, String cameraFace){
-        // add mode to be fast or accurate and cameraFace to be front or back
-    }
-```
-```java
-public void init(Context activityContext, String mode){
-        // add mode to be accurate or fast   
-    }
-```    
+
 
 ## Pull Request
 
