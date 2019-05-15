@@ -81,6 +81,33 @@ After this, just initiallise `LookAtMe` variable with the activity context, add 
         lookAtMe.setLookMe();
 ```        
 
+Now the developer can also access that if the user laughed / smiled during the video. For this, just use this `init()` method instead of the above.
+
+```java
+	lookAtMe.initWithSmilingStatus(this); // for smiling status of the user
+```
+
+To access if the user smiled during the video after this, currently you have to acess the log of the app programatically. You can do with a code like this:
+
+```java
+	try {
+  		Process process = Runtime.getRuntime().exec("logcat");
+  		BufferedReader bufferedReader = new BufferedReader(
+  		new InputStreamReader(process.getInputStream()));
+
+  		StringBuilder log=new StringBuilder();
+  		String line = "";
+  		while ((line = bufferedReader.readLine()) != null) {
+	    		log.append(line);
+  		}
+  		TextView tv = (TextView)findViewById(R.id.textView1);
+  		tv.setText(log.toString());
+  	} 
+	catch (IOException e) {}
+```
+
+To know more about this, please refer [this link](https://stackoverflow.com/questions/12692103/read-logcat-programmatically-within-application).
+
 You can also personalise the experience according to your need, using `init()`. In this method you can add if you want the eye-tracking mode to be `FAST` or `ACCURATE`, and also which camera to use, front or back. The method bodies look like this:
 ```java
 public void init(Context activityContext, String mode, String cameraFace){
