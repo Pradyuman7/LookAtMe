@@ -94,7 +94,10 @@ Now in Version2.0 the developer can also access that if the user laughed / smile
 	lookAtMe.initWithSmilingStatus(this); // for smiling status of the user
 ```
 
-To access if the user smiled during the video after this, currently you have to acess the log of the app programatically. You can do with a code like this:
+To access if the user smiled during the video after this, currently you have to acess the log of the app programatically.
+Currently, LookAtMe counts when user smiles and for how many frames. If the user smiles for 100 frames in total, LookAtMe logs a line stating that "the user smiled for 100 Frames!". After that count resets to 0.
+
+You can access the log of your android app like this:
 
 ```java
 	try {
