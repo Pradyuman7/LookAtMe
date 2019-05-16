@@ -84,20 +84,21 @@ After this, just initiallise `LookAtMe` variable with the activity context, add 
         lookAtMe.init(this);
         lookAtMe.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.videoplayback));
 	// lookAtMe.setVideoPath("http://website.com/video/mp4/62000/62792m.mp4"); to use video from a url
-        lookAtMe.start();
+        
+	lookAtMe.start();
         lookAtMe.setLookMe();
 ```        
 
 You can also personalise the experience according to your need, using `init()`. In this method you can add if you want the eye-tracking mode to be `FAST` or `ACCURATE`, and also which camera to use, front or back. The method bodies look like this:
 ```java
-public void init(Context activityContext, String mode, String cameraFace){
-        // add mode to be fast or accurate and cameraFace to be front or back
-    }
+	public void init(Context activityContext, String mode, String cameraFace){
+        	// add mode to be fast or accurate and cameraFace to be front or back
+    	}
 ```
 ```java
-public void init(Context activityContext, String mode){
-        // add mode to be accurate or fast   
-    }
+	public void init(Context activityContext, String mode){
+        	// add mode to be accurate or fast   
+    	}
 ```    
 
 ### Version2.0 additions
