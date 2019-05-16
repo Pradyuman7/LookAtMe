@@ -15,7 +15,7 @@
 </p>
 
 <p align="center">
-  Android library for a VideoView that plays video only when 👀 are open and 👦 is detected.
+  VideoView that plays video only when :eyes: are open and :boy: is detected with various features
 </p>
 
 ## GIF
