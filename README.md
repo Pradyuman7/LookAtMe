@@ -72,7 +72,7 @@ LookAtMe is very easy to use and can be directly used in your application. You j
 ```
 
 ```XML
-<com.pd.lookatme.LookAtMe
+	<com.pd.lookatme.LookAtMe
         android:id="@+id/lookme"
         android:layout_width="match_parent"
         android:layout_height="250dp" />
