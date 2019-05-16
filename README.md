@@ -83,7 +83,7 @@ After this, just initiallise `LookAtMe` variable with the activity context, add 
 ```java
         lookAtMe.init(this);
         lookAtMe.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.videoplayback));
-
+	// lookAtMe.setVideoPath("http://website.com/video/mp4/62000/62792m.mp4"); to use video from a url
         lookAtMe.start();
         lookAtMe.setLookMe();
 ```        
