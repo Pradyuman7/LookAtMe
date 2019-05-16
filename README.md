@@ -73,9 +73,9 @@ LookAtMe is very easy to use and can be directly used in your application. You j
 
 ```XML
 	<com.pd.lookatme.LookAtMe
-        android:id="@+id/lookme"
-        android:layout_width="match_parent"
-        android:layout_height="250dp" />
+        	android:id="@+id/lookme"
+        	android:layout_width="match_parent"
+        	android:layout_height="250dp" />
 ```
 
 After this, just initiallise `LookAtMe` variable with the activity context, add the video URI, start the video and just call `setLookMe()`, the whole code would look something like this:
