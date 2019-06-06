@@ -103,7 +103,7 @@ You can also personalise the experience according to your need, using `init()`. 
 
 ### Version2.0 additions
 
-Now in Version2.0 the developer can also access that if the user laughed / smiled during the video. For this, just use this `init()` method instead of the above.
+Now in Version2.0 the developer can also access that if the user laughed / smiled during the video. For this, just use this `initWithSmilingStatus()` method instead of the normal `init()` like this:
 
 ```java
 	lookAtMe.initWithSmilingStatus(this); // for smiling status of the user
