@@ -120,7 +120,7 @@ You can access the log of your android app like this:
   		BufferedReader bufferedReader = new BufferedReader(
   		new InputStreamReader(process.getInputStream()));
 
-  		StringBuilder log=new StringBuilder();
+  		StringBuilder log = new StringBuilder();
   		String line = "";
   		while ((line = bufferedReader.readLine()) != null) {
 	    		log.append(line);
