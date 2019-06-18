@@ -15,7 +15,7 @@
 </p>
 
 <p align="center">
-  VideoView that plays video only when :eyes: are open and :boy: is detected with various features
+  VideoView that plays video only when :eyes: are open and :boy: is detected with various other features
 </p>
 
 ## GIF
