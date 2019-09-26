@@ -1,6 +1,10 @@
 # What should I know before contributing
 
-LookAtMe is an android library that helps making a VideoView which detects user's face and checks if the eyes are open and play the video only when both above conditions are met. The video is paused otherwise. This is a simple project android library but is a lot of fun when you think how you can use it at different places.
+LookAtMe is an android library that helps making a VideoView which detects user's face and checks if the eyes are open and play the video only when both of the above conditions are met. The video is paused otherwise. 
+
+This is a simple project android library but is a lot of fun when you think how you can use it at different places.
+
+LookAtMe uses GoogleVision to provide various other features and ofcourse we welcome every idea and contribution :smile:
 
 # How to contribute
 
