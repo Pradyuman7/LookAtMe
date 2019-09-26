@@ -14,6 +14,9 @@
 - Please look at Rules for contributing above and just follow them, this makes sure you are contributing something significant
 - Yep, that's it :smile: :100:
 
+
+## Ideas:
+
 - If the user blinks their eyes 3 times in succession, then the app skips to the next video.
 
 - This idea would increase the functionality of the app by giving the user more functions that are easily accessible. Blinking your eyes 3 times doesn't naturally happen, but users can remember the command and execute it quickly. 
