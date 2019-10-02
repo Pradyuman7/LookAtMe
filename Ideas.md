@@ -37,3 +37,9 @@
 
 - I think a possible use case would be when someone may squint or may have problems with the detection of their eyes. 
 
+
+### 4. Add functionality for users with glasses 
+
+- Since some users cannot actually watch videos without a pair of glasses, due to one issue or the other, I think it would be great to be able to bypass user glasses or any physical obstruction.
+
+- A possible use case would be to display a friendly error when glasses or any other obstruction is detected, or add another motion functionality specially for users with glasses. 
