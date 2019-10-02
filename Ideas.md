@@ -24,3 +24,16 @@
 - This idea would increase the functionality of the app by giving the user more functions that are easily accessible. Blinking your eyes 3 times doesn't naturally happen, but users can remember the command and execute it quickly. 
 
 - The potential use case for this feature is in a dedicated media player, which requires simple commands that the user can use to interact with the video. 
+
+### 2. Add functionality when eyes are not detected for a long period
+
+- Perhaps turn off until motion is detected or something of this sort that would give more control over the possible scenarios that could occur.
+
+- A use case would be to automatically go into power saving mode while the user is not watching video and doing something else.
+
+### 3. Add a range of sensitivities that can be set by the user 
+
+- Since at times it may be hard to determine if the user actually wishes for the feature to be actuated, it may be a good idea to make it easily adjustable to their liking rather than just having two options, fast and accurate.
+
+- I think a possible use case would be when someone may squint or may have problems with the detection of their eyes. 
+
