@@ -43,3 +43,9 @@
 - Since some users cannot actually watch videos without a pair of glasses, due to one issue or the other, I think it would be great to be able to bypass user glasses or any physical obstruction.
 
 - A possible use case would be to display a friendly error when glasses or any other obstruction is detected, or add another motion functionality specially for users with glasses. 
+
+### 5. Add functionality for taking screenshots
+
+- Adding some functionality to take screenshot inside the app without using hands in any way, just using expressions or blinking five times in a row
+
+- Possible use case would be that people can take screenshots without using hands through the app.
