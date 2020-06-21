@@ -49,3 +49,6 @@
 - Adding some functionality to take screenshot inside the app without using hands in any way, just using expressions or blinking five times in a row
 
 - Possible use case would be that people can take screenshots without using hands through the app.
+### 6.MAKE SMART ALARM FOR LAZY PEOPLE
+-Adding a feature to alarm that when the person opens his eyes only ,the alarm will stop.
+Else alarm will continue until the person awake and show his eyes to the smart alarm.
