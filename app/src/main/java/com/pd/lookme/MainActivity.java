@@ -1,12 +1,9 @@
 package com.pd.lookme;
 
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.VideoView;
 
 import com.pd.lookatme.LookAtMe;
 
@@ -30,17 +27,13 @@ public class MainActivity extends AppCompatActivity {
         lookAtMe.start();
         lookAtMe.setLookMe();
 
-
         this.showStatus();
     }
 
     public void showStatus() {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                String message = lookAtMe.getStatus();
-                textView.setText(message);
-            }
+        runOnUiThread(() -> {
+            String message = lookAtMe.getStatus();
+            textView.setText(message);
         });
     }
 

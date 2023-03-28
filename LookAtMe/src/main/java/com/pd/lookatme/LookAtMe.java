@@ -5,8 +5,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.ActivityCompat;
+import androidx.annotation.RequiresApi;
+import androidx.core.app.ActivityCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.Toast;
@@ -35,12 +35,12 @@ public class LookAtMe extends VideoView {
         createCameraSource();
     }
 
-    public void init(Context activityContext, String mode, String cameraFace){
+    public void init(Context activityContext, String mode, String cameraFace) {
         this.activityContext = activityContext;
         createCameraSource(mode,cameraFace);
     }
 
-    public void init(Context activityContext, String mode){
+    public void init(Context activityContext, String mode)  {
         this.activityContext = activityContext;
         createCameraSource(mode);
     }
@@ -50,7 +50,7 @@ public class LookAtMe extends VideoView {
         createCameraSourceWithSmilingStatus();
     }
 
-    public void resume(){
+    public void resume() {
         if (cameraSource != null) {
             try {
                 if (ActivityCompat.checkSelfPermission(activityContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
@@ -65,7 +65,7 @@ public class LookAtMe extends VideoView {
         }
     }
 
-    public void paused(){
+    public void paused() {
         if (cameraSource != null) {
             cameraSource.stop();
         }
@@ -75,7 +75,7 @@ public class LookAtMe extends VideoView {
         }
     }
 
-    public void destroy(){
+    public void destroy() {
         if (cameraSource != null) {
             cameraSource.release();
         }
@@ -131,7 +131,6 @@ public class LookAtMe extends VideoView {
         try {
             if (ActivityCompat.checkSelfPermission(activityContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions((Activity) activityContext, new String[]{Manifest.permission.CAMERA}, 1);
-
                 Toast.makeText(activityContext, "Grant Permission and restart app", Toast.LENGTH_SHORT).show();
             }
             cameraSource.start();
@@ -144,26 +143,23 @@ public class LookAtMe extends VideoView {
 
     private class EyesTracker extends Tracker<Face> {
 
-        private final float THRESHOLD = 0.75f;
-
         private EyesTracker() {
 
         }
 
         @Override
         public void onUpdate(Detector.Detections<Face> detections, Face face) {
+            float THRESHOLD = 0.75f;
             if (face.getIsLeftEyeOpenProbability() > THRESHOLD || face.getIsRightEyeOpenProbability() > THRESHOLD) {
-
-                if (!isPlaying())
+                if (!isPlaying()) {
                     start();
-
+                }
                 status = "Eyes Detected and open, so video continues";
-            }
-            else {
-                if (isPlaying()){
+
+            } else {
+                if (isPlaying()) {
                     pause();
                 }
-
                 status = "Eyes Detected and closed, so video paused";
             }
         }
@@ -182,7 +178,6 @@ public class LookAtMe extends VideoView {
     }
 
     private class FaceTracker extends Tracker<Face> {
-        private final float THRESHOLD = 0.75f;
 
         private FaceTracker(){
 
@@ -190,19 +185,18 @@ public class LookAtMe extends VideoView {
 
         @Override
         public void onUpdate(Detector.Detections<Face> detections, Face face) {
+            float THRESHOLD = 0.75f;
             if(face.getIsSmilingProbability() > THRESHOLD) {
                 smilingStatus = "smiling";
                 timesSmiled++;
                 Log.d("smile", String.valueOf(getTimesSmiled()));
 
-                if(timesSmiled > 100){
+                if(timesSmiled > 100) {
                     timesSmiled -= 100;
-
                     Log.d("Smiling","You smiled for 100 frames!");
-
                 }
-            }
-            else{
+
+            } else {
                 smilingStatus = "Not smiling";
             }
         }
@@ -220,20 +214,18 @@ public class LookAtMe extends VideoView {
 
     private void createCameraSource() {
         FaceDetector detector = new FaceDetector.Builder(activityContext).setTrackingEnabled(true).setClassificationType(FaceDetector.ALL_CLASSIFICATIONS).setMode(FaceDetector.FAST_MODE).build();
-
         detector.setProcessor(new LargestFaceFocusingProcessor(detector, new EyesTracker()));
-
         cameraSource = new CameraSource.Builder(activityContext, detector).setRequestedPreviewSize(1024, 768).setFacing(CameraSource.CAMERA_FACING_FRONT).setRequestedFps(30.0f).build();
 
         try {
             if (ActivityCompat.checkSelfPermission(activityContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions((Activity) activityContext, new String[]{Manifest.permission.CAMERA}, 1);
                 Toast.makeText(activityContext, "Grant Permission and restart app", Toast.LENGTH_SHORT).show();
-            }
-            else
+
+            } else {
                 cameraSource.start();
-        }
-        catch (IOException e) {
+            }
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -250,11 +242,11 @@ public class LookAtMe extends VideoView {
             if (ActivityCompat.checkSelfPermission(activityContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions((Activity) activityContext, new String[]{Manifest.permission.CAMERA}, 1);
                 Toast.makeText(activityContext, "Grant Permission and restart app", Toast.LENGTH_SHORT).show();
-            }
-            else
+
+            } else {
                 cameraSource.start();
-        }
-        catch (IOException e) {
+            }
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -265,11 +257,11 @@ public class LookAtMe extends VideoView {
 
         FaceDetector detector;
 
-        if(mode.toLowerCase().equals("accurate"))
+        if (mode.equalsIgnoreCase("accurate")) {
             detector = new FaceDetector.Builder(activityContext).setTrackingEnabled(true).setClassificationType(FaceDetector.ALL_CLASSIFICATIONS).setMode(FaceDetector.ACCURATE_MODE).build();
-        else
+        } else {
             detector = new FaceDetector.Builder(activityContext).setTrackingEnabled(true).setClassificationType(FaceDetector.ALL_CLASSIFICATIONS).setMode(FaceDetector.FAST_MODE).build();
-
+        }
         detector.setProcessor(new LargestFaceFocusingProcessor(detector, new EyesTracker()));
 
         cameraSource = new CameraSource.Builder(activityContext, detector).setRequestedPreviewSize(1024, 768).setFacing(CameraSource.CAMERA_FACING_FRONT).setRequestedFps(30.0f).build();
@@ -278,11 +270,12 @@ public class LookAtMe extends VideoView {
             if (ActivityCompat.checkSelfPermission(activityContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions((Activity) activityContext, new String[]{Manifest.permission.CAMERA}, 1);
                 Toast.makeText(activityContext, "Grant Permission and restart app", Toast.LENGTH_SHORT).show();
-            }
-            else
+
+            } else {
                 cameraSource.start();
-        }
-        catch (IOException e) {
+            }
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -294,27 +287,27 @@ public class LookAtMe extends VideoView {
 
         FaceDetector detector;
 
-        if(mode.toLowerCase().equals("accurate"))
+        if (mode.equalsIgnoreCase("accurate")) {
             detector = new FaceDetector.Builder(activityContext).setTrackingEnabled(true).setClassificationType(FaceDetector.ALL_CLASSIFICATIONS).setMode(FaceDetector.ACCURATE_MODE).build();
-        else
+        } else {
             detector = new FaceDetector.Builder(activityContext).setTrackingEnabled(true).setClassificationType(FaceDetector.ALL_CLASSIFICATIONS).setMode(FaceDetector.FAST_MODE).build();
-
+        }
         detector.setProcessor(new LargestFaceFocusingProcessor(detector, new EyesTracker()));
 
-        if(cameraFace.toLowerCase().equals("back"))
+        if (cameraFace.equalsIgnoreCase("back")) {
             cameraSource = new CameraSource.Builder(activityContext, detector).setRequestedPreviewSize(1024, 768).setFacing(CameraSource.CAMERA_FACING_BACK).setRequestedFps(30.0f).build();
-        else
+        } else {
             cameraSource = new CameraSource.Builder(activityContext, detector).setRequestedPreviewSize(1024, 768).setFacing(CameraSource.CAMERA_FACING_FRONT).setRequestedFps(30.0f).build();
-
+        }
         try {
             if (ActivityCompat.checkSelfPermission(activityContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions((Activity) activityContext, new String[]{Manifest.permission.CAMERA}, 1);
                 Toast.makeText(activityContext, "Grant Permission and restart app", Toast.LENGTH_SHORT).show();
-            }
-            else
+
+            } else {
                 cameraSource.start();
-        }
-        catch (IOException e) {
+            }
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
